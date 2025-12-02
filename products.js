@@ -22,3 +22,6 @@ fetch("http://100.91.13.32:5000/api/v1/products")
   .catch(error => {
     console.error("Error fetching products:", error);
   });
+<body>
+    <script src="products.js"></script>
+</body>
