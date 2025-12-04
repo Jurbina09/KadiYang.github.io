@@ -2,18 +2,21 @@
 fetch("http://100.91.13.32:5000/api/v1/products")
   .then(response => response.json())
   .then(data => {
-    const tableBody = document.querySelector("#inventoryTable tbody");
-
+    const tableBody = document.getElementById("table-body");
+  if (data.status != "success") {
+    console.error("API error:",data.message);
+    return;
+  }
     // Loop through products and add rows
-    data.forEach(product => {
+    data.data.forEach(product => {
       const row = document.createElement("tr");
 
       row.innerHTML = `
-        <td>${product.id}</td>
-        <td>${product.name}</td>
+        <td>${product.product_id}</td>
+        <td>${product.product_name}</td>
         <td>${product.category}</td>
-        <td>${product.price}</td>
-        <td>${product.stock}</td>
+        <td>${product.cost}</td>
+        <td>${product.retail_price}</td>
       `;
 
       tableBody.appendChild(row);
