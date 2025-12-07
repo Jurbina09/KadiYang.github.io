@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Monthly Sales Summary</title>
+  <title>Store Inventory</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     table { border-collapse: collapse; width: 100%; }
@@ -15,37 +15,34 @@
 
 <body>
 
-  <h1>Store Monthly Sales Summary</h1>
+  <h1>Inventory for Store</h1>
 
   <h3>Store ID:
     <span id="store-id"></span>
   </h3>
 
-  <table id="salesTable">
+  <table id="inventoryTable">
     <thead>
       <tr>
-        <th>Month</th>
         <th>Product ID</th>
         <th>Product Name</th>
-        <th>Units Sold</th>
+        <th>Current Stock</th>
       </tr>
     </thead>
     <tbody id="table-body">
-      <!-- JS will inject here -->
+      <!-- JS injects rows here -->
     </tbody>
   </table>
 
-  <!-- JS File -->
-  <script src="6.8monthly_sales.js"></script>
+  <script src="6.6inventory.js"></script>
 
   <script>
-    // Read ?store_id=12 from URL
     const params = new URLSearchParams(window.location.search);
     const storeId = params.get("store_id");
 
     document.getElementById("store-id").textContent = storeId;
 
-    loadMonthlySales(storeId);
+    loadInventory(storeId);
 
     document.getElementById("goBack").addEventListener("click", () => {
       window.location.href = "../index.html";
